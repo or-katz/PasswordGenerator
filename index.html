@@ -153,7 +153,7 @@
 			[true, "Numbers", "2345678"],
 			[true, "Lowercase", "adenrt"],
 			[true, "Uppercase", "ABDEGHLNQRT"],
-			[true, "ASCII symbols", "!#$%*?"],
+			[false, "ASCII symbols", "!#$%*?"],
 			[false, "Space", " "],
 		];
 		
@@ -238,7 +238,7 @@
 			// Calculate desired length
 			var length;
 			if (document.getElementById("by-length").checked)
-				length = parseInt(document.getElementById("length").value, 10);
+				length = parseInt(document.getElementById("length").value, 14);
 			else if (document.getElementById("by-entropy").checked)
 				length = Math.ceil(parseFloat(document.getElementById("entropy").value) * Math.log(2) / Math.log(charset.length));
 			else
