@@ -118,7 +118,7 @@
 					<tbody>
 						<tr>
 							<td><input type="radio" name="type" id="by-length" checked="checked"> <label for="by-length">Length:&#xA0;</label></td>
-							<td><input type="number" min="0" value="10" step="1" id="length" style="width:4em" oninput="document.getElementById('by-length').checked=true;"> characters</td>
+							<td><input type="number" min="0" value="14" step="1" id="length" style="width:4em" oninput="document.getElementById('by-length').checked=true;"> characters</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="type" id="by-entropy"> <label for="by-entropy">Entropy:</label>&#xA0;</td>
@@ -238,7 +238,7 @@
 			// Calculate desired length
 			var length;
 			if (document.getElementById("by-length").checked)
-				length = parseInt(document.getElementById("length").value, 14);
+				length = parseInt(document.getElementById("length").value, 10);
 			else if (document.getElementById("by-entropy").checked)
 				length = Math.ceil(parseFloat(document.getElementById("entropy").value) * Math.log(2) / Math.log(charset.length));
 			else
