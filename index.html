@@ -14,7 +14,11 @@
   <title>Random Password Generator</title>
   <style>
     body {
-      display: flex;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+	  display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -27,10 +31,10 @@
     }
 
     #generatedPasswordContainer {
-      width: 300px;
-      height: 50px;
-      border: 1px solid #ccc;
-      padding: 5px;
+      width: 600px;
+      height: 100px;
+      border: 2px solid #ccc;
+      padding: 10px;
       text-align: center;
       font-weight: bold;
       font-size: 1.2em;
@@ -44,7 +48,7 @@
       border: none;
       background-color: transparent;
       font-weight: bold;
-      font-size: 2.4em;
+      font-size: 4.4em;
       overflow: hidden;
 	  text-align: center; /* Center the text inside the container */
     }
@@ -68,21 +72,24 @@
   </style>
 </head>
 <body>
-  <h1>Random Password Generator</h1>
+  <h1 style="font-size:60px">Random Password Generator</h1>
   <div id="options">
-    <label><input type="radio" name="symbolOption" id="includeSymbol" checked>With Symbol</label>
-    <label><input type="radio" name="symbolOption" id="excludeSymbol">Without Symbol</label>
-	<label>Word Size: <input type="number" id="wordSize" value="6" min="4" max="10" step=2></label>
+    
+	<label style="font-size:30px">   Word Size: <input style="font-size:30px" type="number" id="wordSize" value="6" min="4" max="10" step=2></label>
   </div>
   <div id="generatedPasswordContainer">
     <textarea id="generatedPassword" readonly></textarea>
   </div>
+  <div>
+      <label style="font-size:30px" ><input type="radio" name="symbolOption" id="includeSymbol" checked>With Symbol</label>
+      <label style="font-size:30px" ><input type="radio" name="symbolOption" id="excludeSymbol">Without Symbol    </label>
+  </div>
   <div id="buttons">
-    <button onclick="generateNewPassword()">Generate New Password</button>
-    <button onclick="copyPasswordToClipboard()">Copy to Clipboard</button>
+    <button style="font-size:30px" onclick="generateNewPassword()">Generate New Password</button>
+    <button style="font-size:30px" onclick="copyPasswordToClipboard()">Copy to Clipboard</button>
   </div>
   
-  <div style="font-size:21px"><br><b>Password strength of Minimum 110⁵ </b></div>
+  <div style="font-size:26px"><br><b>Password strength of Minimum 110⁵ </b></div>
 
   <script>
     var realEnglishSyllables = ["ba", "be", "bi", "bo", "bu", "da", "de", "di", "do", "du", "fa", "fe", "fi", "fo", "fu", "ga", "ge", "gi", "go", "gu", "ha", "he", "hi", "ho", "hu", "ka", "ke", "ki", "ko", "ku", "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne", "ni", "no", "nu", "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro", "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "va", "ve", "vi", "vo", "vu", "wa", "we", "wi", "wo", "wu", "ya", "ye", "yi", "yo", "yu", "za", "ze", "zi", "zo", "zu"];
