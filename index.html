@@ -77,7 +77,7 @@
   <h1 style="font-size:50px">Random Password Generator</h1>
   <div id="options">
     
-	<label style="font-size:45px">   Word Size: <select style="font-size:45px" id="wordSize">
+	<label style="font-size:45px">   Word Size: <select style="font-size:45px" id="wordSize" onchange="updateCaption()">
         <option value="4">4</option>
         <option value="6" selected>6</option>
         <option value="8">8</option>
@@ -98,9 +98,10 @@
   </div>
   
   <div style="font-size:19px">
-  <br>✓ Password strength of Minimum 110⁵ combinations
-  <br>✓ Runs on JavaScript. No password is stored outside the device from which it runs from.
+  <br><div id="caption">✓ Password strength of 85^3x10²x5 combinations</div>
+  ✓ Runs on JavaScript. No password is stored outside the device from which it runs from.
   </div>
+  
   <div style="font-size:17px">
   <br>
   V1.0 • Copyright © written by Or K.
@@ -161,6 +162,34 @@
       window.getSelection().removeAllRanges();
     }
 
+
+
+	function updateCaption() {
+		  var wordSize = document.getElementById("wordSize").value;
+		  var captionElement = document.getElementById("caption");
+		  switch (wordSize) {
+			case "4":
+			  captionElement.textContent = "✓ Password strength of 3,612,500 combinations";
+			  break;
+			case "6":
+			  captionElement.textContent = "✓ Password strength of 307,062,500 combinations";
+			  break;
+			case "8":
+			  captionElement.textContent = "✓ Password strength of 26,100,312,500 combinations";
+			  break;
+			case "10":
+			  captionElement.textContent = "✓ Password strength of 2,218,526,562,500 combinations";
+			  break;
+			default:
+			  captionElement.textContent = "✓ Password strength of 307,062,500 combinations";
+		  }
+		}
+
+
+
+
+
+	updateCaption(); // Initial update
     generateNewPassword();
   </script>
 </body>
