@@ -32,7 +32,7 @@
 
     #generatedPasswordContainer {
       width: 800px;
-      height: 125px;
+      height: 110px;
       border: 2px solid #ccc;
       padding: 7px;
       text-align: center;
@@ -97,14 +97,14 @@
     <button style="font-size:35px" onclick="copyPasswordToClipboard()">📋 Copy to Clipboard</button>
   </div>
   
-  <div style="font-size:19px">
+  <div style="font-size:25px">
   <br><div id="caption">✓ Password strength of 307,062,500 combinations</div>
-  ✓ Runs on JavaScript. No password is stored outside the device from which it runs from.
+  ✅ Runs on JavaScript. No password is stored outside the device from which it runs from.
   </div>
   
   <div style="font-size:17px">
   <br>
-  V1.1 • Copyright © written by Or K.
+  v1.2 • Copyright © written by Or K.
   </div>
 
   <script>
@@ -169,19 +169,19 @@
 		  var captionElement = document.getElementById("caption");
 		  switch (wordSize) {
 			case "4":
-			  captionElement.textContent = "✓ Password strength of 3,612,500 combinations";
+			  captionElement.textContent = "✅ Password strength of 3,612,500 combinations";
 			  break;
 			case "6":
-			  captionElement.textContent = "✓ Password strength of 307,062,500 combinations";
+			  captionElement.textContent = "✅ Password strength of 307,062,500 combinations";
 			  break;
 			case "8":
-			  captionElement.textContent = "✓ Password strength of 26,100,312,500 combinations";
+			  captionElement.textContent = "✅ Password strength of 26,100,312,500 combinations";
 			  break;
 			case "10":
-			  captionElement.textContent = "✓ Password strength of 2,218,526,562,500 combinations";
+			  captionElement.textContent = "✅ Password strength of 2,218,526,562,500 combinations";
 			  break;
 			default:
-			  captionElement.textContent = "✓ Password strength of 307,062,500 combinations";
+			  captionElement.textContent = "✅ Password strength of 307,062,500 combinations";
 		  }
 		}
 
