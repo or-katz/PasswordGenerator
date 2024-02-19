@@ -1,46 +1,66 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   
   <meta charset="UTF-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="צור סיסמה">
-  <link rel="apple-touch-startup-image" href="https://img.icons8.com/color/180/000000/paint-brush.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="https://makepass.xyz/manifest.json">
+  <meta name="google-adsense-account" content="ca-pub-4756025214331026">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   
   
   
   
-  <title>Random Password Generator</title>
+  
+  <title>Random Word Password Generator</title>
   <style>
     body {
-      width: 100%;
-      height: 100%;
       margin: 0;
       padding: 0;
-	  display: flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
+      font-family: 'Courier New', monospace;
+      background-color: #f0f0f0; /* Subtle background color */
     }
 
     h1 {
       text-align: center;
     }
 
-    #generatedPasswordContainer {
-      width: 800px;
-      height: 110px;
-      border: 2px solid #ccc;
-      padding: 7px;
-      text-align: center;
+    #makepass{
+      font-size: 2.4em;
+      margin-bottom:0;
+      text-decoration: bold,none;
+      color: #333;
 	  align-items: center;
+	  text-align: center;
+	  
+    }
+    
+    #random_pass_gen {
+      font-size: 2em;
+      text-decoration: none;
+      color: #333;
+	  align-items: center;
+	  text-align: center;
+    }
+
+    #generatedPasswordContainer {
+      width: 22.4em;
+      height: 2.4em;
+      border: 2px solid #ccc;
+      padding: 5px;
+      text-align: center;
       font-weight: bold;
-      font-size: 1em;
-      margin-bottom: 10px;
-	  background-color: WhiteSmoke;
+      font-size: 0.9em;
+      margin-bottom: 4px;
+      background-color: #f5f5f5;
     }
 
     #generatedPassword {
@@ -49,66 +69,220 @@
       border: none;
       background-color: transparent;
       font-weight: bold;
-      font-size: 5em;
+      font-size: 2em;
       overflow: hidden;
-	  text-align: center; /* Center the text inside the container */
-	  align-items: center;
+      text-align: center;
     }
 
     #buttons {
+      margin-top: 10px;
       display: flex;
       gap: 10px;
       justify-content: center;
     }
 
     button {
-      padding: 4px;
+      padding: 0.4em;
+      font-size: 0.8em;
+      background-color: #4CAF50; /* Green color for buttons */
+      color: white; /* White text color */
+      border: none;
+      cursor: pointer;
     }
 
-    #options {
-      display: flex;
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    #options, #wordSize, #includeSymbol {
       gap: 10px;
       justify-content: center;
       margin-bottom: 10px;
+      font-size: 1em;
     }
+
+    #includeSymbol {
+      transform: scale(1.4);
+    }
+
+    #features {
+      font-size: 1em;
+      margin-top: 10px;
+      margin-left: 1em;
+      color: #555; /* Subdued text color */
+    }
+	
+	bullet_check {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-top: 0.5em;
+	  margin-left: 1em;
+	  margin-right: 1em;
+	  display: flex;
+      align-items: flex-start; /* Align to the top of the container */
+    }
+
+    li::before {
+      content: "✅ ";
+      margin-right: 8px;
+      margin-top: 0px; /* Adjust the top margin as needed */
+    }
+
+    #copyright {
+      margin-top: 10px;
+	  margin-left: 0.8em;
+	  margin-right: 0.8em;
+      font-size: 0.9em;
+      color: #777; /* Even more subdued text color */
+    }
+
+    .tab1, .tab2 {
+      display: inline-block;
+      margin-left: 1px;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #aaa;
+}
+
+/* When the checkbox is checked, add a green background */
+.container input:checked ~ .checkmark {
+  background-color: #4CAF50;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   </style>
 </head>
 <body>
-  <h1 style="font-size:50px">Random Password Generator</h1>
+  <a id="makepass">makepass.xyz</a>
+  <a id="random_pass_gen">Random Word Password Generator</a>
   <div id="options">
-    
-	<label style="font-size:45px">   Word Size: <select style="font-size:45px" id="wordSize" onchange="updateCaption()">
+  
+    <label class="container">Include Symbool
+		<input type="checkbox" class="checkbox" id="includeSymbol" onclick="updateCaptionSymbol()" checked>
+		<span class="checkmark"></span>
+	</lable>
+	<label><select id="wordSize" onchange="updateCaptionSymbol()">
         <option value="3">Tiny</option>
         <option value="5" selected>Small</option> 
         <option value="8">Large</option>
         <option value="10">Giant</option>
-      </select></label>
+      </select> Word Size 
+	</label>
   </div>
   <div id="generatedPasswordContainer">
     <textarea id="generatedPassword" readonly></textarea>
   </div>
-  <div>
-      <br><label style="font-size:30px" ><input type="radio" name="symbolOption" id="includeSymbol" onclick="updateCaptionSymbol()" checked>With Symbol</label>
-          <label style="font-size:30px" ><input type="radio" name="symbolOption" id="excludeSymbol" onclick="updateCaptionSymbol()">Without Symbol    </label>
-  </div>
-  <br>
+  
+ 
   <div id="buttons">
-    <button style="font-size:35px" onclick="generateNewPassword()">🔑 Generate New Password</button>
-    <button style="font-size:35px" onclick="copyPasswordToClipboard()">📋 Copy to Clipboard</button>
+    <button onclick="generateNewPassword()">🔑 Generate New Password</button>
+    <button onclick="copyPasswordToClipboard()">📋 Copy to Clipboard</button>
   </div>
   
-  <div style="font-size:25px">
-  <br><a>✅ Password strength is at least </a><b><a id="caption">34,742,892,700<a/><a id="captionSymbol"> x 5</a></b> combinations<br>
-  ✅ Runs on JavaScript. No password is stored outside the device from which it runs from.
-  </div>
+  <bullet_check>
+  <li><span>Password strength is at least:<br></a><a id="output">🟨🟨🟨</a><b><a id="wordSize"><a/></b></span></li>
+  <li><span>Runs on JavaScript locally. No password is stored outside the device from which it runs from</span></li>
+  </bullet_check>
   
-  <div style="font-size:19px">
-  <br>
-  v1.3 • Copyright © written by Or K.
+  
+  <div id="copyright">
+  v1.6 • Copyright © makepass.xyz • written by Or K.
   </div>
 
   <script>
   
+  
+
+  
+  
+  	// Initialize the variable
+    let PasswordStrength  = 0;
   
   
   //3 = 2
@@ -116,739 +290,122 @@
   //8 = 4
   //10 = 5
   
-    // 703:
+    // total 656:
     var realEnglishSyllables = [
-	"ba",
-	"be",
-	"bi",
-	"bo",
-	"bu",
-	"da",
-	"de",
-	"di",
-	"do",
-	"du",
-	"fa",
-	"fe",
-	"fi",
-	"fo",
-	"fu",
-	"ga",
-	"ge",
-	"gi",
-	"go",
-	"gu",
-	"ha",
-	"he",
-	"hi",
-	"ho",
-	"hu",
-	"ka",
-	"ke",
-	"ki",
-	"ko",
-	"ku",
-	"la",
-	"le",
-	"li",
-	"lo",
-	"lu",
-	"ma",
-	"me",
-	"mi",
-	"mo",
-	"mu",
-	"na",
-	"ne",
-	"ni",
-	"no",
-	"nu",
-	"pa",
-	"pe",
-	"pi",
-	"po",
-	"pu",
-	"ra",
-	"re",
-	"ri",
-	"ro",
-	"ru",
-	"sa",
-	"se",
-	"si",
-	"so",
-	"su",
-	"ta",
-	"te",
-	"ti",
-	"to",
-	"tu",
-	"va",
-	"ve",
-	"vi",
-	"vo",
-	"vu",
-	"wa",
-	"we",
-	"wi",
-	"wo",
-	"wu",
-	"ya",
-	"ye",
-	"yi",
-	"yo",
-	"yu",
-	"za",
-	"ze",
-	"zi",
-	"zo",
-	"zu",
-	
-	//list of 3 letters syllables 
-	
-	"ace",
-    "age",
-    "aid",
-    "air",
-    "ale",
-    "amp",
-    "and",
-    "ant",
-    "ape",
-    "apt",
-    "arc",
-    "are",
-    "ark",
-    "arm",
-    "art",
-    "ash",
-    "ask",
-    "asp",
-    "ate",
-    "awe",
-    "axe",
-    "aye",
-    "bad",
-    "bag",
-    "ban",
-    "bar",
-    "bat",
-    "bay",
-    "bed",
-    "beg",
-    "ben",
-    "bet",
-    "bid",
-    "big",
-    "bin",
-    "bit",
-    "boa",
-    "bob",
-    "bog",
-    "boo",
-    "bop",
-    "bow",
-    "box",
-    "boy",
-    "bra",
-    "bro",
-    "bug",
-    "bum",
-    "bun",
-    "bus",
-    "but",
-    "buy",
-    "bye",
-    "cab",
-    "cad",
-    "cam",
-    "can",
-    "cap",
-    "car",
-    "cat",
-    "cod",
-    "coo",
-    "cop",
-    "cot",
-    "cow",
-    "coy",
-    "cry",
-    "cub",
-    "cue",
-    "cup",
-    "cur",
-    "cut",
-    "dad",
-    "dam",
-    "dan",
-    "day",
-    "deb",
-    "dee",
-    "den",
-    "dew",
-    "die",
-    "dig",
-    "dim",
-    "din",
-    "dip",
-    "doe",
-    "dog",
-    "don",
-    "dot",
-    "dry",
-    "dub",
-    "duo",
-    "dye",
-    "ear",
-    "eat",
-    "ebb",
-    "ego",
-    "eke",
-    "elf",
-    "elk",
-    "elm",
-    "emu",
-    "end",
-    "era",
-    "ere",
-    "erg",
-    "eye",
-    "fab",
-    "fad",
-    "fan",
-    "far",
-    "fat",
-    "fee",
-    "fen",
-    "few",
-    "fib",
-    "fid",
-    "fie",
-    "fig",
-    "fin",
-    "fir",
-    "fit",
-    "fix",
-    "fly",
-    "fog",
-    "foo",
-    "for",
-    "fou",
-    "fow",
-    "fox",
-    "fry",
-    "fum",
-    "fun",
-    "fur",
-    "gab",
-    "gad",
-    "gag",
-    "gal",
-    "gap",
-    "gas",
-    "gat",
-    "gay",
-    "gem",
-    "get",
-    "gig",
-    "gin",
-    "gob",
-    "god",
-    "goo",
-    "got",
-    "gum",
-    "gun",
-    "gut",
-    "guy",
-    "gym",
-    "had",
-    "hag",
-    "ham",
-    "hap",
-    "has",
-    "hat",
-    "haw",
-    "hay",
-    "her",
-    "hey",
-    "hid",
-    "him",
-    "hip",
-    "his",
-    "hit",
-    "hob",
-    "hod",
-    "hoe",
-    "hog",
-    "hop",
-    "hot",
-    "how",
-    "hub",
-    "hue",
-    "hug",
-    "hum",
-    "hun",
-    "hut",
-    "ice",
-    "icy",
-    "ill",
-    "ink",
-    "inn",
-    "ion",
-    "ire",
-    "irk",
-    "ism",
-    "its",
-    "ivy",
-    "jab",
-    "jam",
-    "jar",
-    "jaw",
-    "jay",
-    "jet",
-    "jig",
-    "job",
-    "joe",
-    "jog",
-    "jot",
-    "joy",
-    "jug",
-    "keg",
-    "ken",
-    "key",
-    "kid",
-    "kin",
-    "kip",
-    "kit",
-    "lab",
-    "lad",
-    "lag",
-    "lam",
-    "lap",
-    "lar",
-    "lat",
-    "law",
-    "lax",
-    "lay",
-    "lea",
-    "led",
-    "lee",
-    "leg",
-    "let",
-    "lid",
-    "lie",
-    "lip",
-    "lit",
-    "lob",
-    "log",
-    "loo",
-    "lot",
-    "low",
-    "lox",
-    "lug",
-    "lum",
-    "mad",
-    "man",
-    "map",
-    "mat",
-    "maw",
-    "may",
-    "mea",
-    "meg",
-    "men",
-    "met",
-    "mew",
-    "mid",
-    "mil",
-    "mir",
-    "mix",
-    "mob",
-    "mod",
-    "mog",
-    "moo",
-    "mop",
-    "mot",
-    "mow",
-    "mud",
-    "mug",
-    "mum",
-    "nab",
-    "nag",
-    "nan",
-    "nay",
-    "nee",
-    "net",
-    "new",
-    "nil",
-    "nip",
-    "nit",
-    "nod",
-    "nog",
-    "non",
-    "nor",
-    "not",
-    "now",
-    "nub",
-    "nun",
-    "nut",
-    "oaf",
-    "oak",
-    "oar",
-    "oat",
-    "odd",
-    "ode",
-    "off",
-    "oft",
-    "ohm",
-    "oil",
-    "old",
-    "one",
-    "ope",
-    "opt",
-    "orb",
-    "ore",
-    "ort",
-    "ose",
-    "our",
-    "out",
-    "owe",
-    "owl",
-    "own",
-    "pad",
-    "pal",
-    "pan",
-    "pap",
-    "par",
-    "pas",
-    "pat",
-    "paw",
-    "pay",
-    "pea",
-    "peg",
-    "pen",
-    "per",
-    "pet",
-    "pew",
-    "pic",
-    "pie",
-    "pig",
-    "pin",
-    "pip",
-    "pit",
-    "pix",
-    "pod",
-    "pom",
-    "poo",
-    "pop",
-    "pot",
-    "pow",
-    "pox",
-    "pro",
-    "pry",
-    "pub",
-    "pug",
-    "pun",
-    "pup",
-    "pur",
-    "put",
-    "qua",
-    "que",
-    "qui",
-    "quo",
-    "rag",
-    "ran",
-    "rap",
-    "rat",
-    "raw",
-    "ray",
-    "red",
-    "ree",
-    "ref",
-    "rem",
-    "rev",
-    "rho",
-    "rib",
-    "rid",
-    "rig",
-    "rim",
-    "rip",
-    "rob",
-    "rod",
-    "roe",
-    "rot",
-    "row",
-    "rub",
-    "rue",
-    "rug",
-    "run",
-    "rut",
-    "rye",
-    "sad",
-    "sag",
-    "sal",
-    "sap",
-    "sat",
-    "saw",
-    "say",
-    "sea",
-    "sec",
-    "see",
-    "set",
-    "sew",
-    "sex",
-    "sha",
-    "she",
-    "shy",
-    "sib",
-    "sic",
-    "sin",
-    "sip",
-    "sir",
-    "sis",
-    "sit",
-    "ski",
-    "sky",
-    "sly",
-    "sob",
-    "sod",
-    "son",
-    "sop",
-    "sot",
-    "sou",
-    "sow",
-    "soy",
-    "spa",
-    "spy",
-    "sub",
-    "sue",
-    "sum",
-    "sun",
-    "sup",
-    "tab",
-    "tad",
-    "tag",
-    "tam",
-    "tan",
-    "tap",
-    "tar",
-    "tat",
-    "tax",
-    "tea",
-    "tee",
-    "ten",
-    "the",
-    "tho",
-    "tic",
-    "tie",
-    "tin",
-    "tip",
-    "tit",
-    "toe",
-    "tom",
-    "ton",
-    "top",
-    "tor",
-    "tot",
-    "tow",
-    "toy",
-    "try",
-    "tub",
-    "tug",
-    "tun",
-    "tup",
-    "tut",
-    "tux",
-    "two",
-    "ugh",
-    "ump",
-    "urn",
-    "use",
-    "ute",
-    "veg",
-    "vet",
-    "vie",
-    "vow",
-    "wad",
-    "wag",
-    "wan",
-    "war",
-    "was",
-    "wax",
-    "way",
-    "web",
-    "wed",
-    "wee",
-    "wet",
-    "who",
-    "why",
-    "wig",
-    "win",
-    "wit",
-    "woe",
-    "wok",
-    "woo",
-    "wow",
-    "wry",
-    "yak",
-    "yam",
-    "yap",
-    "yaw",
-    "yea",
-    "yen",
-    "yep",
-    "yes",
-    "yet",
-    "yew",
-    "yid",
-    "yin",
-    "yip",
-    "yob",
-    "yod",
-    "yok",
-    "yon",
-    "yor",
-    "you",
-    "yow",
-    "yuk",
-    "yum",
-    "yup",
-    "zag",
-    "zap",
-    "zen",
-    "zip",
-    "zit",
-    "zoo",
-    "zot",
-    "zyg",
-    "abe",
-    "abs",
-    "ace",
-    "act",
-    "add",
-    "ade",
-    "ads",
-    "aft",
-    "age",
-    "ago",
-    "aha",
-    "aid",
-    "ail",
-    "aim",
-    "air",
-    "ais",
-    "ait",
-    "ala",
-    "ale",
-    "all",
-    "alp",
-    "als",
-    "alt",
-    "ama",
-    "ami",
-    "amp",
-    "amu",
-    "ana",
-    "and",
-    "ane",
-    "ani",
-    "ant",
-    "any",
-    "apo",
-    "app",
-    "apt",
-    "arc",
-    "are",
-    "arf",
-    "ark",
-    "arm",
-    "ars",
-    "art",
-    "ash",
-    "ask",
-    "asp",
-    "ass",
-    "ate",
-    "att",
-    "auk",
-    "ava",
-    "ave",
-    "avo",
-    "awa",
-    "awe",
-    "awl",
-    "awn",
-    "axe",
-    "aya",
-    "aye",
-    "baa",
-    "bad",
-    "bag",
-    "bah",
-    "bal",
-    "bam",
-    "ban",
-    "bap",
-    "bar",
-    "bas",
-    "bat",
-    "bay",
-    "bed",
-    "bee",
-    "beg",
-    "bel",
-    "ben",
-    "bet",
-    "bey",
-    "bib",
-    "bid",
-    "big",
-    "bin",
-    "bio",
-    "bis",
-    "bit",
-    "biz",
-    "boa",
-    "bob",
-    "bod",
-    "bog",
-    "boo",
-    "bop",
-    "bos",
-    "bot",
-    "bow",
-    "box",
-    "boy",
-    "bra",
-    "bro",
-    "brr",
-    "bub",
-    "bud",
-    "bug"
+	"ba","be","bi","bo","bu",
+	"da","de","di","do","du",
+	"fa","fe","fi","fo","fu",
+	"ga","ge","gi","go","gu",
+	"ha","he","hi","ho","hu",
+	"ka","ke","ki","ko","ku",
+	"la","le","li","lo","lu",
+	"ma","me","mi","mo","mu",
+	"na","ne","ni","no","nu",
+	"pa","pe","pi","po","pu",
+	"ra","re","ri","ro","ru",
+	"sa","se","si","so","su",
+	"ta","te","ti","to","tu",
+	"va","ve","vi","vo","vu",
+	"wa","we","wi","wo","wu",
+	"ya","ye","yi","yo","yu",
+	"za","ze","zi","zo","zu",
+	"ape","abe","abs","ace","act","add","ade","ads","aft","age","ago","aha","aid","ail","aim","air","ais","ait","ala","ale","all","alp","als","alt","ama","ami","amp","amu","ana","and","ane","ani","ant","any","apo","app","apt","arc","are","arf","ark","arm","ars","art","ash","ask","asp","ass","ate","att","auk","ava","ave","avo","awa","awe","awl","awn","axe","aya","aye",
+	"bum","bun","bus","but","buy","bye",
+	"cab","cad","cam","can","cap","car","cat","cod","coo","cop","cot","cow","coy","cry","cub","cue","cup","cur","cut",
+	"dad","dam","dan","day","deb","dee","den","dew","die","dig","dim","din","dip","doe","dog","don","dot","dry","dub","duo","dye",
+	"ear","eat","ebb","ego","eke","elf","elk","elm","emu","end","era","ere","erg","eye",
+	"fab","fad","fan","far","fat","fee","fen","few","fib","fid","fie","fig","fin","fir","fit","fix","fly","fog","foo","for","fou","fow","fox","fry","fum","fun","fur",
+	"gab","gad","gag","gal","gap","gas","gat","gay","gem","get","gig","gin","gob","god","goo","got","gum","gun","gut","guy","gym",
+	"had","hag","ham","hap","has","hat","haw","hay","her","hey","hid","him","hip","his","hit","hob","hod","hoe","hog","hop","hot","how","hub","hue","hug","hum","hun","hut",
+	"ice","icy","ill","ink","inn","ion","ire","irk","ism","its","ivy",
+	"jab","jam","jar","jaw","jay","jet","jig","job","joe","jog","jot","joy","jug",
+	"keg","ken","key","kid","kin","kip","kit",
+	"lab","lad","lag","lam","lap","lar","lat","law","lax","lay","lea","led","lee","leg","let","lid","lie","lip","lit","lob","log","loo","lot","low","lox","lug","lum",
+	"mad","man","map","mat","maw","may","mea","meg","men","met","mew","mid","mil","mir","mix","mob","mod","mog","moo","mop","mot","mow","mud","mug","mum",
+	"nab","nag","nan","nay","nee","net","new","nil","nip","nit","nod","nog","non","nor","not","now","nub","nun","nut",
+	"oaf","oak","oar","oat","odd","ode","off","oft","ohm","oil","old","one","ope","opt","orb","ore","ort","ose","our","out","owe","owl","own",
+	"pad","pal","pan","pap","par","pas","pat","paw","pay","pea","peg","pen","per","pet","pew","pic","pie","pig","pin","pip","pit","pix","pod","pom","poo","pop","pot","pow","pox","pro","pry","pub","pug","pun","pup","pur","put",
+	"qua","que","qui","quo",
+	"rag","ran","rap","rat","raw","ray","red","ree","ref","rem","rev","rho","rib","rid","rig","rim","rip","rob","rod","roe","rot","row","rub","rue","rug","run","rut","rye",
+	"sad","sag","sal","sap","sat","saw","say","sea","sec","see","set","sew","sex","sha","she","shy","sib","sic","sin","sip","sir","sis","sit","ski","sky","sly","sob","sod","son","sop","sot","sou","sow","soy","spa","spy","sub","sue","sum","sun","sup",
+	"tab","tad","tag","tam","tan","tap","tar","tat","tax","tea","tee","ten","the","tho","tic","tie","tin","tip","tit","toe","tom","ton","top","tor","tot","tow","toy","try","tub","tug","tun","tup","tut","tux","two",
+	"ugh","ump","urn","use","ute",
+	"veg","vet","vie","vow",
+	"wad","wag","wan","war","was","wax","way","web","wed","wee","wet","who","why","wig","win","wit","woe","wok","woo","wow","wry",
+	"yak","yam","yap","yaw","yea","yen","yep","yes","yet","yew","yid","yin","yip","yob","yod","yok","yon","yor","you","yow","yuk","yum","yup",
+	"zag","zap","zen","zip","zit","zoo","zot","zyg",
+	"baa","bad","bag","bah","bal","bam","ban","bap","bar","bas","bat","bay","bed","bee","beg","bel","ben","bet","bey","bib","bid","big","bin","bio","bis","bit","biz","boa","bob","bod","bog","boo","bop","bos","bot","bow","box","boy","bra","bro","brr","bub","bud","bug"
 	];
-    var symbols = ["!", "?", "$","%", "*"];
+	
+	//var realEnglishSyllables = ["aa", "bbb"];
+	
+    var symbols = ["!", "?", "$", "%", "*", "#"];
 
     function getRandomElement(array) {
       var randomIndex = Math.floor(Math.random() * array.length);
       return array[randomIndex];
     }
 
+
+
+
+
+
     function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+      cap_first_letter = string.charAt(0).toUpperCase() + string.slice(1);
+	  
+	  return cap_first_letter;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function generateInventedWord() {
       var word = "";
 	  var wordSize = parseInt(document.getElementById("wordSize").value) || 4;
-      var wordLength = Math.floor(Math.random() * 1) + wordSize   ; // Generate word length between 5 and 6
+      var wordLength = Math.floor(Math.random() * 1) + wordSize   ; 
       while (word.length < wordLength) {
-        word += getRandomElement(realEnglishSyllables);
+        rand_e = getRandomElement(realEnglishSyllables);
+		
+		var OneorZero = Math.floor(Math.random() * 2);
+		if (OneorZero == 1) {
+		  cap_rand_e = capitalizeFirstLetter(rand_e);
+		} else {cap_rand_e = rand_e ;}
+		
+		
+		
+		word += cap_rand_e;
       }
       return capitalizeFirstLetter(word);
     }
 
+
+
+
+
+
+
     function generateRandomNumbers() {
       var numbers = "";
-      for (var i = 0; i < 2; i++) {
+      var randomNumber = Math.floor(Math.random() * 2) + 2;
+	  for (var i = 0; i < randomNumber; i++) {
         numbers += Math.floor(Math.random() * 10);
       }
       return numbers;
@@ -880,53 +437,111 @@
 
 
 
-  //option | max number of Syllables possibilities
-  //3      | 2
-  //5      | 3
-  //8      | 4
-  //10     | 5
-  
-  // 703 total syllables
+
+  // 656 total syllables
 
 
 
 
-	function updateCaption() {
-		  var wordSize = document.getElementById("wordSize").value;
-		  var captionElement = document.getElementById("caption");
-		  switch (wordSize) {
-			case "3":
-			  // 703^2*10^2
-			  captionElement.textContent = "49,420,900";
-			  break;
-			case "5":
-			  // 703^3*10^2
-			  captionElement.textContent = "34,742,892,700";
-			  break;
-			case "8":
-			  // 703^4*10^2
-			  captionElement.textContent = "24,424,253,568,100";
-			  break;
-			case "10":
-			  // 703^5*10^2
-			  captionElement.textContent = "17,170,250,258,374,300";
-			  break;
-			default:
-			  captionElement.textContent = "34,742,892,700";
-		  }
-		}
+
 
 
     function updateCaptionSymbol() {
       var includeSymbol = document.getElementById("includeSymbol").checked;
-      var captionSymbolElement = document.getElementById("captionSymbol");
-      captionSymbolElement.textContent = includeSymbol ? " x 5" : "";
+      //var captionSymbolElement = document.getElementById("captionSymbol");
+      //captionSymbolElement.textContent = includeSymbol ? " x 6" : "";
+	  
+	  
+
+
+
+
+
+
+          var wordSize = document.getElementById("wordSize").value;
+		  var captionElement = document.getElementById("wordSize");
+		  switch (wordSize) {
+			case "3":
+			  // syllables ^ min_position * 2num_digits+3num_digits * options_cap_no_cap_power_possibilities
+			  // 656^2*1100*2^1
+			  //captionElement.textContent = "946,739,200";
+			  PasswordStrength = 1;
+			  break;
+			case "5":
+			  // 656^3*1100*2^2
+			  //captionElement.textContent = "1,242,121,830,400";
+			  PasswordStrength = 3;
+			  break;
+			case "8":
+			  // 656^4*1100*2^3
+			  //captionElement.textContent = "1,629,663,841,484,800";
+			  PasswordStrength = 5;
+			  break;
+			case "10":
+			  // 656^5*1100*2^4
+			  //captionElement.textContent = "2,138,118,960,028,060,000";
+			  PasswordStrength = 7;
+			  break;
+			default:
+			  //captionElement.textContent = "1,242,121,830,400";
+			  PasswordStrength = 9
+		  }
+
+
+
+
+	       // Get the checkbox element
+           let checkbox = document.getElementById("includeSymbol");
+
+           // Update the variable based on checkbox status
+           if (checkbox.checked) 
+		        {
+              PasswordStrength  += 1;
+                }
+		   else {
+              PasswordStrength  += 0;
+                }
+
+
+
+
+        let PasswordStrengthSymbol = "";
+
+        if (PasswordStrength == 1) { PasswordStrengthSymbol = "🟥⬜⬜⬜⬜⬜"};
+		if (PasswordStrength == 2) { PasswordStrengthSymbol = "🟥🟥⬜⬜⬜⬜"};
+		if (PasswordStrength == 3) { PasswordStrengthSymbol = "🟥🟥🟥⬜⬜⬜"};
+		if (PasswordStrength == 4) { PasswordStrengthSymbol = "🟨🟨🟨⬜⬜⬜"};
+		if (PasswordStrength == 5) { PasswordStrengthSymbol = "🟨🟨🟨🟨⬜⬜"};
+		if (PasswordStrength == 6) { PasswordStrengthSymbol = "🟨🟨🟨🟨🟨⬜"};
+		if (PasswordStrength == 7) { PasswordStrengthSymbol = "🟩🟩🟩🟩🟩⬜"};
+		if (PasswordStrength == 8) { PasswordStrengthSymbol = "🟩🟩🟩🟩🟩🟩"};
+
+        // Update the output text
+        document.getElementById("output").innerText = PasswordStrengthSymbol ;
+		
+	  
+	  
+	  
+	  
     }
 
 
-	updateCaption(); // Initial update
+	//updateCaption(); // Initial update
     generateNewPassword();
 	updateCaptionSymbol(); // Initial update
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
   </script>
+  
+
 </body>
 </html>
